@@ -7,7 +7,10 @@ import { Container } from "@/components/Container";
 import Image from "next/image";
 import pp from "../assets/images/pp.jpeg";
 import Link from "next/link";
-import { IoLogoGithub } from "react-icons/io";
+import { IoLogoGithub, IoLogoYoutube, IoLogoInstagram } from "react-icons/io";
+import thumbYoutube from "../assets/images/js.png";
+import thumbSinglePage from "../assets/images/single.png";
+import Footer from "../components/Footer";
 
 export default function Home() {
   return (
@@ -60,7 +63,7 @@ export default function Home() {
             <div className="text-center my-4">
               <Link
                 href="/works"
-                className="inline-flex items-center px-4 min-w-[2.5rem] h-10 rounded-sm bg-card dark:hover:bg-card-foreground dark:hover:text-gray-900 hover:bg-gray-900 hover:text-white transition-all duration-200 ease-in-out border gap-1"
+                className="inline-flex items-center px-4 min-w-[2.5rem] h-10 rounded-sm bg-card dark:hover:bg-card-foreground dark:hover:text-gray-900 hover:bg-[#0a0a0a] hover:text-white transition-all duration-200 ease-in-out border gap-1"
               >
                 My Portfolio
                 <span className="flex items-center justify-center">
@@ -88,17 +91,74 @@ export default function Home() {
                 <Link
                   href="https://github.com/imGrappa"
                   target="_blank"
-                  className="flex items-center"
+                  className="inline-flex items-center h-10 font-semibold rounded-sm px-3.5 text-[#81E6D9] hover:bg-[#81e6d91f]"
                 >
-                  <span>
+                  <span className="inline-flex self-center me-2">
                     <IoLogoGithub />
                   </span>
-                  @Github
+                  @imGrappa
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="https://www.youtube.com/@korayaslnn"
+                  target="_blank"
+                  className="inline-flex items-center h-10 font-semibold rounded-sm px-3.5 text-[#81E6D9] hover:bg-[#81e6d91f]"
+                >
+                  <span className="inline-flex self-center me-2">
+                    <IoLogoYoutube />
+                  </span>
+                  @korayaslnn
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href="https://www.instagram.com/koray_aslnn/"
+                  target="_blank"
+                  className="inline-flex items-center h-10 font-semibold rounded-sm px-3.5 text-[#81E6D9] hover:bg-[#81e6d91f]"
+                >
+                  <span className="inline-flex self-center me-2">
+                    <IoLogoInstagram />
+                  </span>
+                  @koray_aslnn
                 </Link>
               </li>
             </ul>
+            <div className="grid md:grid-cols-2 grid-cols-1 gap-5 mt-3">
+              <div>
+                <Link
+                  href="https://www.youtube.com/watch?v=NKSWmGiFoPw&list=PLW5s23IMsrJaGLsu-N-JGs9HThtR8SW9J"
+                  className="text-center"
+                  target="_blank"
+                >
+                  <Image
+                    src={thumbYoutube}
+                    alt="Youtube Thumbnail"
+                    className="rounded-md"
+                  />
+                  <p className="font-semibold mt-2">Javascript</p>
+                  <p className="text-sm">Javascript course on Youtube</p>
+                </Link>
+              </div>
+              <div>
+                <Link
+                  href="https://www.youtube.com/watch?v=Wvcij_-MgxQ&list=PLW5s23IMsrJaFPP-inUhDcRVI8a_aeHo7"
+                  className="text-center"
+                  target="_blank"
+                >
+                  <Image
+                    src={thumbSinglePage}
+                    alt="Single Page Thumbnail"
+                    className="rounded-md"
+                  />
+                  <p className="font-semibold mt-2">Single Page</p>
+                  <p className="text-sm">Single Page coding on Youtube</p>
+                </Link>
+              </div>
+            </div>
           </div>
         </article>
+        <Footer />
       </Container>
     </main>
   );
