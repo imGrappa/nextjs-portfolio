@@ -2,15 +2,17 @@
 import { Terminal } from "lucide-react";
 import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert";
 import * as React from "react";
-import NavBar from "../components/NavBar";
-import { Container } from "@/components/Container";
 import Image from "next/image";
 import pp from "../assets/images/pp.jpeg";
 import Link from "next/link";
-import { IoLogoGithub, IoLogoYoutube, IoLogoInstagram } from "react-icons/io";
+import {
+  IoLogoGithub,
+  IoLogoYoutube,
+  IoLogoInstagram,
+  IoLogoLinkedin,
+} from "react-icons/io";
 import thumbYoutube from "../assets/images/js.png";
 import thumbSinglePage from "../assets/images/single.png";
-import Footer from "../components/Footer";
 
 export default function Home() {
   return (
@@ -148,6 +150,18 @@ export default function Home() {
                   <IoLogoInstagram />
                 </span>
                 @koray_aslnn
+              </Link>
+            </li>
+            <li>
+              <Link
+                href="linkedin.com/in/korayhan/"
+                target="_blank"
+                className="inline-flex items-center h-10 font-semibold rounded-sm px-3.5 text-[#81E6D9] hover:bg-[#81e6d91f]"
+              >
+                <span className="inline-flex self-center me-2">
+                  <IoLogoLinkedin />
+                </span>
+                @korayhan
               </Link>
             </li>
           </ul>

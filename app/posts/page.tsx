@@ -1,0 +1,45 @@
+import Link from "next/link";
+import { type SanityDocument } from "next-sanity";
+import { client } from "../../sanity/lib/client";
+
+const POSTS_QUERY = `*[
+  _type == "post"
+  && defined(slug.current)
+]|order(publishedAt desc)[0...12]{
+  _id,
+  title,
+  slug,
+  publishedAt,
+  "imageUrl": mainImage.asset->url,
+  "imageAlt": mainImage.alt
+}`;
+
+const options = { next: { revalidate: 60 } };
+
+export default async function PostsPage() {
+  const posts = await client.fetch<SanityDocument[]>(POSTS_QUERY, {}, options);
+  return (
+    <>
+      <h3 className="text-xl font-bold mb-6 mt-3">Posts</h3>
+      <div className="grid md:grid-cols-2 gap-x-6 gap-y-12">
+        {posts.map((post) => (
+          <div key={post._id}>
+            <Link href={`/posts/${post.slug.current}`}>
+              <img
+                className="rounded-xl h-36 object-cover w-full block"
+                src={post.imageUrl}
+                alt={post.imageAlt || post.title}
+              />
+              <h3 className="text-lg mt-2 text-center">{post.title}</h3>
+              <div className="flex items-center justify-between">
+                <p className="text-sm text-muted-foreground text-center text-wrap-2">
+                  {post.excerpt}
+                </p>
+              </div>
+            </Link>
+          </div>
+        ))}
+      </div>
+    </>
+  );
+}

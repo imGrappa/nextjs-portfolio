@@ -19,9 +19,9 @@ function NavMenu() {
       </Link>
       <Link
         className="p-2 opacity-85 hover:opacity-100 transition-all ease-in-out"
-        href="/post"
+        href="/posts"
       >
-        Post
+        Posts
       </Link>
       <Link
         className="flex items-center gap-1 p-2 opacity-85 hover:opacity-100 transition-all ease-in-out"
