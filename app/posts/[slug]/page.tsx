@@ -10,6 +10,7 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import components from "@/lib/PortableTextComponents";
+import { capitalizeFirstLetter } from "@/lib/utils";
 
 export default async function PostDetail({
   params,
@@ -57,7 +58,9 @@ export default async function PostDetail({
         </p>
       </div>
       <div className="mt-4">
-        <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
+        <h1 className="text-3xl font-bold mb-4">
+          {capitalizeFirstLetter(post.title)}
+        </h1>
         {post.imageUrl && (
           <img
             src={post.imageUrl}
