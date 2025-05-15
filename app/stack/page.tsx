@@ -45,6 +45,20 @@ function Stack() {
                 </div>
               </div>
               <div>adobe xd</div>
+              <div className="flex items-center gap-4">
+                <div>
+                  <img
+                    className="w-10 h-10 object-cover rounded-lg"
+                    src="https://korayaslan.com/assets/figma-9TC_2wbl.png"
+                    alt="Figma Design Tool"
+                  ></img>
+                </div>
+                <div>
+                  <h5 className="text-sm font-semibold">Figma</h5>
+                  <p className="text-xs text-muted-foreground">Design Tool</p>
+                </div>
+              </div>
+              <div>adobe xd</div>
             </div>
           </div>
         </div>
