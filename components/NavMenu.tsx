@@ -4,7 +4,7 @@ import { IoLogoGithub } from "react-icons/io";
 
 function NavMenu() {
   return (
-    <div className="flex items-center gap-2 grow">
+    <div className="md:flex items-center gap-2 grow hidden">
       <Link
         className="p-2 opacity-85 hover:opacity-100 transition-all ease-in-out"
         href="/works"

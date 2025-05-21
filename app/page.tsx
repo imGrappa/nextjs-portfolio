@@ -25,12 +25,12 @@ export default function Home() {
         </AlertDescription>
       </Alert>
       <article>
-        <div className="flex mt-6">
+        <div className="flex md:flex-row flex-col md:items-start items-center mt-6">
           <div className="grow">
             <h2 className="text-4xl font-bold">Korayhan ASLAN</h2>
             <p>Digital Craftsman ( Front-end Developer )</p>
           </div>
-          <div className="w-[100px] h-[100px] overflow-hidden rounded-full object-cover border-[2px] border-white ml-6">
+          <div className="w-[100px] h-[100px] overflow-hidden rounded-full object-cover border-[2px] border-white md:mt-0 mt-4">
             <Image
               src={pp}
               width={900}

@@ -35,7 +35,7 @@ export default async function PostsPage() {
   return (
     <>
       <h3 className="text-xl font-bold mb-6 mt-3">Posts</h3>
-      <div className="grid md:grid-cols-2 gap-x-6 gap-y-12">
+      <div className="grid md:grid-cols-2 gap-6">
         {posts.map((post) => (
           <div key={post._id}>
             <Link href={`/posts/${post.slug.current}`}>
