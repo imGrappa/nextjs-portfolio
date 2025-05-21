@@ -1,12 +1,10 @@
+// app/layout.tsx (server component)
+
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ThemeProvider } from "../components/theme-provider";
 import "./globals.css";
-
-import NavBar from "@/components/NavBar";
-import Footer from "@/components/Footer";
-import { Container } from "@/components/Container";
-import PageTransition from "@/components/PageTransition";
+import LayoutClient from "./layoutClient";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -25,9 +23,9 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
   children,
-}: Readonly<{
+}: {
   children: React.ReactNode;
-}>) {
+}) {
   return (
     <html lang="en" suppressHydrationWarning>
       <body
@@ -39,11 +37,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <NavBar />
-          <Container>
-            <PageTransition>{children}</PageTransition>
-          </Container>
-          <Footer />
+          <LayoutClient>{children}</LayoutClient>
         </ThemeProvider>
       </body>
     </html>

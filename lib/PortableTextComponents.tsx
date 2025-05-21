@@ -4,7 +4,7 @@ const components = {
       <img
         src={value.asset?.url}
         alt={value.alt || "image"}
-        className="rounded-xl my-4"
+        className="rounded-xl my-4 w-full"
       />
     ),
   },
@@ -15,6 +15,12 @@ const components = {
     ),
     h2: ({ children }: any) => (
       <h2 className="text-xl font-semibold mt-5 mb-2">{children}</h2>
+    ),
+    h3: ({ children }: any) => (
+      <h3 className="text-lg font-semibold mt-4 mb-2">{children}</h3>
+    ),
+    h4: ({ children }: any) => (
+      <h4 className="text-sm mt-3 mb-2">{children}</h4>
     ),
     normal: ({ children }: any) => <p className="mb-4">{children}</p>,
   },

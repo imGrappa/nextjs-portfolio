@@ -9,6 +9,7 @@ import {
 import { client } from "@/sanity/lib/client";
 import { PortableText } from "@portabletext/react";
 import { notFound } from "next/navigation";
+import components from "@/lib/PortableTextComponents";
 
 export default async function WorkDetail({
   params,
@@ -19,8 +20,18 @@ export default async function WorkDetail({
     _id,
     title,
     publishedAt,
-    body,
-    "imageUrl": mainImage.asset->url
+    body[]{
+      ...,
+      _type == "image" => {
+        ...,
+        asset->{
+          _id,
+          url
+        }
+      }
+    },
+    "imageUrl": mainImage.asset->url,
+    "imageAlt": mainImage.alt
   }`;
 
   const work = await client.fetch(query, { slug: params.slug });
@@ -29,25 +40,31 @@ export default async function WorkDetail({
 
   return (
     <>
-      <Breadcrumb>
+      <Breadcrumb className="mb-4">
         <BreadcrumbList>
           <BreadcrumbItem>
             <BreadcrumbLink href="/works">Works</BreadcrumbLink>
           </BreadcrumbItem>
           <BreadcrumbSeparator />
           <BreadcrumbItem>
-            <BreadcrumbPage>{work.title}</BreadcrumbPage>
+            <BreadcrumbPage className="text-xl font-bold">
+              {work.title}
+            </BreadcrumbPage>
           </BreadcrumbItem>
         </BreadcrumbList>
       </Breadcrumb>
-      <h1 className="text-3xl font-bold mb-4">{work.title}</h1>
-      {work.imageUrl && (
-        <img src={work.imageUrl} alt={work.title} className="rounded-xl mb-6" />
-      )}
-      <p className="text-sm text-muted-foreground mb-2">
-        {new Date(work.publishedAt).toLocaleDateString()}
-      </p>
-      <PortableText value={work.body} />
+      <div className="work-body">
+        <div className="mb-4 text-justify">
+          <PortableText value={work.body} components={components} />
+        </div>
+        {work.imageUrl && (
+          <img
+            src={work.imageUrl}
+            alt={work.title}
+            className="rounded-xl mb-6 w-full"
+          />
+        )}
+      </div>
     </>
   );
 }

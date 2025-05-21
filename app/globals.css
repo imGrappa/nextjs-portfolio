@@ -135,3 +135,15 @@
 .color-red {
   color: red;
 }
+
+.work-body p em {
+  display: inline-block;
+  padding: 0 4px;
+  border-radius: 2px;
+  background: rgba(154, 230, 180, 0.16);
+  color: #9ae6b4;
+  text-transform: uppercase;
+  font-style: normal;
+  font-size: 0.75rem;
+  font-weight: bold;
+}
