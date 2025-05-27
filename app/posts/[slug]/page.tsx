@@ -49,7 +49,9 @@ export default async function PostDetail({
             </BreadcrumbItem>
             <BreadcrumbSeparator />
             <BreadcrumbItem>
-              <BreadcrumbPage></BreadcrumbPage>
+              <BreadcrumbPage className="text-xl font-bold">
+                {post.title}
+              </BreadcrumbPage>
             </BreadcrumbItem>
           </BreadcrumbList>
         </Breadcrumb>
@@ -57,14 +59,14 @@ export default async function PostDetail({
           {new Date(post.publishedAt).toLocaleDateString()}
         </p>
       </div>
-      <div className="mt-4">
-        <h1 className="text-3xl font-bold mb-4">
-          {capitalizeFirstLetter(post.title)}
-        </h1>
+      <div className="mt-4 post-body">
         {post.imageUrl && (
           <img
             src={post.imageUrl}
             alt={post.imageAlt || post.title}
+            width={1280}
+            height={720}
+            loading="lazy"
             className="rounded-xl mb-6"
           />
         )}

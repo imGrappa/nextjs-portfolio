@@ -40,19 +40,16 @@ export default async function PostsPage() {
           <div key={post._id}>
             <Link href={`/posts/${post.slug.current}`}>
               <img
-                className="rounded-xl h-36 object-cover w-full block"
+                className="rounded-xl h-36 w-full block"
                 src={post.imageUrl}
                 alt={post.imageAlt || post.title}
+                width={1280}
+                height={720}
+                loading="lazy"
               />
               <h3 className="text-lg mt-2 text-center">
                 {capitalizeFirstLetter(post.title)}
               </h3>
-              <div className="line-clamp-2 text-sm text-muted-foreground mt-1 text-center">
-                <PortableText
-                  value={[post.body?.[0]]}
-                  components={components}
-                />
-              </div>
             </Link>
           </div>
         ))}

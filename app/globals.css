@@ -132,7 +132,8 @@
   -webkit-box-orient: vertical;
 }
 
-.work-body p em {
+.work-body p em,
+.post-body p em {
   display: inline-block;
   padding: 0 4px;
   border-radius: 2px;
@@ -142,7 +143,4 @@
   font-style: normal;
   font-size: 0.75rem;
   font-weight: bold;
-}
-.color {
-  color: Red;
 }

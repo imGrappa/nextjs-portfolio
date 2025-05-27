@@ -8,8 +8,36 @@ const components = {
       />
     ),
   },
-  marks: {},
+  marks: {
+    link: ({ children, value }: any) => {
+      const href = value?.href || "#";
+      const isExternal = href.startsWith("http");
+      return (
+        <a
+          href={href}
+          target={isExternal ? "_blank" : "_self"}
+          rel={isExternal ? "noopener noreferrer" : undefined}
+          className="text-blue-600 underline hover:text-blue-800"
+        >
+          {children}
+        </a>
+      );
+    },
+  },
   block: {
+    normal: ({ children }: any) => {
+      // Eğer çocuklar arasında sadece bir link varsa <p> ile sarmalama!
+      const onlyContainsLink =
+        children.length === 1 &&
+        typeof children[0] === "object" &&
+        children[0].type === "a";
+
+      return onlyContainsLink ? (
+        <>{children}</>
+      ) : (
+        <p className="mb-4">{children}</p>
+      );
+    },
     h1: ({ children }: any) => (
       <h1 className="text-2xl font-bold mt-6 mb-2">{children}</h1>
     ),
@@ -22,7 +50,6 @@ const components = {
     h4: ({ children }: any) => (
       <h4 className="text-sm mt-3 mb-2">{children}</h4>
     ),
-    normal: ({ children }: any) => <p className="mb-4">{children}</p>,
   },
   list: {
     bullet: ({ children }: any) => (
