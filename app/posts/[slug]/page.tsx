@@ -10,7 +10,6 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import components from "@/lib/PortableTextComponents";
-import { capitalizeFirstLetter } from "@/lib/utils";
 
 export default async function PostDetail({
   params,

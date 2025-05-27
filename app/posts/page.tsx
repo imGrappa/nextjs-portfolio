@@ -1,9 +1,7 @@
 import Link from "next/link";
 import { type SanityDocument } from "next-sanity";
-import { client } from "../../sanity/lib/client";
+import { client } from "../../sanity-studio/sanity/lib/client";
 import { capitalizeFirstLetter } from "@/lib/utils";
-import { PortableText } from "@portabletext/react";
-import components from "@/lib/PortableTextComponents";
 
 const POSTS_QUERY = `*[
   _type == "post"
