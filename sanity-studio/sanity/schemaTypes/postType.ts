@@ -1,11 +1,12 @@
 import {DocumentTextIcon} from '@sanity/icons'
+import {ComponentType} from 'react'
 import {defineArrayMember, defineField, defineType} from 'sanity'
 
 export const postType = defineType({
   name: 'post',
   title: 'Post',
   type: 'document',
-  icon: DocumentTextIcon,
+  icon: DocumentTextIcon as ComponentType,
   fields: [
     defineField({
       name: 'title',
@@ -34,8 +35,8 @@ export const postType = defineType({
           name: 'alt',
           type: 'string',
           title: 'Alternative text',
-        })
-      ]
+        }),
+      ],
     }),
     defineField({
       name: 'categories',
