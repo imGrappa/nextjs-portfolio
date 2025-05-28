@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { client } from "@/sanity/lib/client";
+import { client } from "../../sanity-studio/sanity/lib/client";
 import { capitalizeFirstLetter } from "@/lib/utils";
 
 export const revalidate = 60;
