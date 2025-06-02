@@ -51,3 +51,5 @@ npm run dev
 
 - The Next.js frontend is deployed separately (e.g., Vercel)
 - The Sanity Studio is deployed using Sanity Studio Hosting
+
+- Don't forget to edit your .env file in the root directory via sanity studio. Otherwise you will get an error.
