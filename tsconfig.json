@@ -27,7 +27,7 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "sanity-studio/sanity.config.ts"
+    "sanity-studio/sanity.config.js"
   ],
   "exclude": ["node_modules"]
 }
