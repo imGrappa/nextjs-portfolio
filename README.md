@@ -10,7 +10,17 @@
 
 ## 📁 Folder Structure
 
-<pre> <code>```bash . ├── app/ # Next.js App Router pages ├── components/ # Reusable UI components ├── sanity-studio/ # Sanity CMS studio ├── public/ # Static assets ├── styles/ # Global styles ├── lib/ # Utility functions ├── types/ # TypeScript types └── README.md ```</code> </pre>
+```bash
+.
+├── app/ # Next.js App Router pages
+├── components/ # Reusable UI components
+├── sanity-studio/ # Sanity CMS studio
+├── public/ # Static assets
+├── styles/ # Global styles
+├── lib/ # Utility functions
+├── types/ # TypeScript types
+└── README.md
+```
 
 ## 🚀 Features
 
