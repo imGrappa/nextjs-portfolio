@@ -1,6 +1,6 @@
 import Link from "next/link";
 import { type SanityDocument } from "next-sanity";
-import { client } from "../../sanity-studio/sanity/lib/client";
+import { client } from "@/lib/sanity";
 import { capitalizeFirstLetter } from "@/lib/utils";
 
 const POSTS_QUERY = `*[
@@ -25,10 +25,10 @@ const POSTS_QUERY = `*[
   "imageAlt": mainImage.alt
 }`;
 
-const options = { next: { revalidate: 60 } };
+export const revalidate = 60;
 
 export default async function PostsPage() {
-  const posts = await client.fetch<SanityDocument[]>(POSTS_QUERY, {}, options);
+  const posts = await client.fetch<SanityDocument[]>(POSTS_QUERY);
 
   return (
     <>
