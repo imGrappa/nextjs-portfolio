@@ -1,6 +1,7 @@
 import { client } from "../../../sanity-studio/sanity/lib/client";
 import { notFound } from "next/navigation";
 import { PortableText } from "@portabletext/react";
+import Image from "next/image";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -10,31 +11,66 @@ import {
   BreadcrumbSeparator,
 } from "@/components/ui/breadcrumb";
 import components from "@/lib/PortableTextComponents";
+import type { Metadata } from "next";
 
-export default async function PostDetail({
-  params,
-}: {
-  params: { slug: string };
-}) {
+// Type tanımları
+interface Post {
+  _id: string;
+  title: string;
+  publishedAt: string;
+  body: any[];
+  imageUrl?: string;
+  imageAlt?: string;
+}
+
+type PageParams = {
+  params: Promise<{ slug: string }>;
+};
+
+// generateStaticParams için düzeltilmiş tip
+export async function generateStaticParams() {
+  const query = `*[_type == "post"]{ "slug": slug.current }`;
+  const slugs = await client.fetch<{ slug: string }[]>(query);
+  return slugs.map((slugObj) => ({
+    slug: slugObj.slug,
+  }));
+}
+
+// Metadata oluşturma
+export async function generateMetadata({ params }: PageParams): Promise<Metadata> {
+  const resolvedParams = await params;
+  const query = `*[_type == "post" && slug.current == $slug][0]{ title }`;
+  const post = await client.fetch<{ title: string }>(query, {
+    slug: resolvedParams.slug,
+  });
+
+  return {
+    title: post?.title || "Post Not Found",
+  };
+}
+
+// Post sayfası bileşeni
+export default async function PostDetail({ params }: PageParams) {
+  const resolvedParams = await params;
   const query = `*[_type == "post" && slug.current == $slug][0]{
-  _id,
-  title,
-  publishedAt,
-  body[]{
-    ...,
-    _type == "image" => {
+    _id,
+    title,
+    publishedAt,
+    body[] {
       ...,
-      asset->{
-        _id,
-        url
+      _type == "image" => {
+        ...,
+        asset->{
+          _id,
+          url
+        }
       }
-    }
-  },
-  "imageUrl": mainImage.asset->url,
-  "imageAlt": mainImage.alt
-}`;
+    },
+    "imageUrl": mainImage.asset->url,
+    "imageAlt": mainImage.alt
+  }`;
 
-  const post = await client.fetch(query, { slug: params.slug });
+  const post = await client.fetch<Post | null>(query, { slug: resolvedParams.slug });
 
   if (!post) return notFound();
 
@@ -60,12 +96,12 @@ export default async function PostDetail({
       </div>
       <div className="mt-4 post-body">
         {post.imageUrl && (
-          <img
+          <Image
             src={post.imageUrl}
             alt={post.imageAlt || post.title}
             width={1280}
             height={720}
-            loading="lazy"
+            priority={false}
             className="rounded-xl mb-6"
           />
         )}
