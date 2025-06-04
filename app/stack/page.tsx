@@ -17,6 +17,7 @@ import SassIcon from "../../assets/images/sass.png";
 import ReduxTkIcon from "../../assets/images/redux.png";
 import NextJsIcon from "../../assets/images/nextjs.png";
 import SanityIcons from "../../assets/images/sanity.png";
+import CursorIcon from "../../assets/images/cursorIcon.png";
 
 function Stack() {
   return (
@@ -276,6 +277,23 @@ function Stack() {
                 <div>
                   <h5 className="text-sm font-semibold">Sanity</h5>
                   <p className="text-xs text-muted-foreground">Headless CMS</p>
+                </div>
+              </div>
+              <div className="flex items-center gap-4 p-2 border rounded-lg border-[transparent] hover:border hover:border-gray-300 dark:hover:border-[#252629] hover:bg-stone-50 dark:hover:bg-[#1B1C20] transition-all duration-300 cursor-default">
+                <div>
+                  <Image
+                    className="w-10 h-10 object-cover rounded-lg"
+                    src={CursorIcon}
+                    alt="Cursor AI Icon"
+                  />
+                </div>
+                <div>
+                  <h5 className="text-sm font-semibold">
+                    Cursor The AI Code Editor
+                  </h5>
+                  <p className="text-xs text-muted-foreground">
+                    AI-Powered Code Editing
+                  </p>
                 </div>
               </div>
             </div>
