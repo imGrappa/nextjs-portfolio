@@ -9,7 +9,6 @@ import BootstrapIcon from "../../assets/images/bootstrap.png";
 import TailwindIcon from "../../assets/images/tailwind.png";
 import JqueryIcon from "../../assets/images/jquery.png";
 import ReactJsIcon from "../../assets/images/react.png";
-import NextIcon from "../../assets/images/nextjs.png";
 import GithubIcon from "../../assets/images/github.png";
 import GitIcon from "../../assets/images/git.png";
 import VercelIcon from "../../assets/images/vercel.png";
@@ -17,6 +16,7 @@ import VscodeIcon from "../../assets/images/vscode.png";
 import SassIcon from "../../assets/images/sass.png";
 import ReduxTkIcon from "../../assets/images/redux.png";
 import NextJsIcon from "../../assets/images/nextjs.png";
+import SanityIcons from "../../assets/images/sanity.png";
 
 function Stack() {
   return (
@@ -263,6 +263,19 @@ function Stack() {
                   <p className="text-xs text-muted-foreground">
                     Cloud Platform
                   </p>
+                </div>
+              </div>
+              <div className="flex items-center gap-4 p-2 border rounded-lg border-[transparent] hover:border hover:border-gray-300 dark:hover:border-[#252629] hover:bg-stone-50 dark:hover:bg-[#1B1C20] transition-all duration-300 cursor-default">
+                <div>
+                  <Image
+                    className="w-10 h-10 object-cover rounded-lg"
+                    src={SanityIcons}
+                    alt="Sanity Icon"
+                  />
+                </div>
+                <div>
+                  <h5 className="text-sm font-semibold">Sanity</h5>
+                  <p className="text-xs text-muted-foreground">Headless CMS</p>
                 </div>
               </div>
             </div>
